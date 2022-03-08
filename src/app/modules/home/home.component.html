@@ -1,0 +1,25 @@
+<div class="pt-5 container">
+  <ng-container *ngFor="let item of priceList">
+    <price-card [priceItem]="item"></price-card>
+  </ng-container>
+</div>
+<!-- <html>
+
+<body>
+</body>
+<script>
+  var burl = "https://api.binance.com";
+  var query = '/api/vl/klines';
+  query += '?symbol=BTCUSDT&interval=15m&limit=2';
+  var url = burl + query;
+  var oueRequest = new XMLHttpRequest();
+
+  oueRequest.open('GET', url, true);
+  oueRequest.onload = function () {
+    console.log(oueRequest.responseText);
+  }
+  oueRequest.send();
+
+</script>
+
+</html> -->

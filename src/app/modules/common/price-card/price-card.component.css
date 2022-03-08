@@ -1,0 +1,14 @@
+.trade-button {
+    padding-left: 16px;
+    padding-right: 16px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    background-color: #fff;
+}
+
+.price-card-body {
+    background-color: #444444;
+    color: #ffffff;
+    font-weight: 900;
+    border-bottom: 1px solid #ffffff;
+}

@@ -1,0 +1,15 @@
+<div class="nav-bar-style">
+    <div class="container nav-bar-style">
+        <div class="row justify-content-between align-content-center w-100 h-100">
+            <div class="col-auto">
+                <h1 class="logo">Trading Bot</h1>
+            </div>
+            <div class="col-auto d-flex align-self-center">
+                <a class="nav-button" [routerLink]="['/main','home']">Home</a>
+                <a class="nav-button" [routerLink]="['/main','wallet']">Wallet</a>
+                <a class="nav-button" [routerLink]="['/main','bot']">Bot</a>
+                <a class="nav-button" [routerLink]="['/main','account']" (click)="getUser()">Account</a>
+            </div>
+        </div>
+    </div>
+</div>
