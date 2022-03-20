@@ -1,7 +1,7 @@
 import { Data } from "@angular/router"
 
 export interface ListRequestRes {
-    
+
     baseAsset?: string;
     circulatingSupply?: number;
     cmcUniqueId?: number;
@@ -37,4 +37,9 @@ export interface ListRequestRes {
     volume?: number;
     volumeGlobal?: number;
     website?: string;
+}
+
+export interface LoginRequest {
+    email: string;
+    password: string;
 }

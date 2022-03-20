@@ -29,6 +29,6 @@ export class BotComponent {
   displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
   dataSource = ELEMENT_DATA;
   constructor(){
-    console.log("123")
+   
   }
 }

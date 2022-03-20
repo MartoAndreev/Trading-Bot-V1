@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { Observable } from 'rxjs';
+import { LoginRequest } from '../modules/app/store/interfaces';
 
 @Injectable({
     providedIn: 'root',
@@ -25,6 +26,11 @@ export class AppService {
     public getSingleCryptoPriceRequest(assetCode: string): Observable<any> {
         let url = `https://api.binance.com/api/v3/ticker/price?symbol=${assetCode}USDT`;
         return this.http.get<any>(url);
+    }
+
+    public loginRequest(params: LoginRequest): Observable<any> {
+        let url = 'http://localhost:3000/user/signup';
+        return this.http.post<any>(url, params);
     }
 }
 export interface User {

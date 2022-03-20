@@ -16,13 +16,13 @@ export const appState = (state: AppState) => state.appState;
 export const selectAllBinanceCrypto = createSelector(
     appState,
     (state: IAppState) => state.allBinanceCrypto
-    
+
 )
 
 export const selectSavedCryptos = createSelector(
     appState,
     (state: IAppState) => state.savedCryptos
-    
+
 )
 
 // export interface SelectorState {

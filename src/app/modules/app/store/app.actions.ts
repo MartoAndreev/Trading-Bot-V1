@@ -1,5 +1,5 @@
 import { createAction, props, union } from "@ngrx/store";
-import { ListRequestRes } from "./interfaces";
+import { ListRequestRes, LoginRequest } from "./interfaces";
 
 export enum AppActions {
     LOAD_BINANCE_CRYPTO = "[App] Load Binance Crypto",
@@ -10,6 +10,9 @@ export enum AppActions {
     GET_SINGLE_CRYPTO_PRICE_SUCCESS = "[App] Get Single Crypto Price Success",
     GET_SINGLE_CRYPTO_PRICE_FAILURE = "[App] Get Single Crypto Price Failure",
 
+    LOGIN = "[User] Login",
+    LOGIN_SUCCESS = "[User] Login Success",
+    LOGIN_FAILURE = "[User] Login Failure"
 }
 
 export const loadBinanceCrypto = createAction(AppActions.LOAD_BINANCE_CRYPTO);
@@ -20,6 +23,10 @@ export const getSingleCryptoPrice = createAction(AppActions.GET_SINGLE_CRYPTO_PR
 export const getSingleCryptoPriceSuccess = createAction(AppActions.GET_SINGLE_CRYPTO_PRICE_SUCCESS, props<{ params: any }>());
 export const getSingleCryptoPriceFailure = createAction(AppActions.GET_SINGLE_CRYPTO_PRICE_FAILURE);
 
+export const login = createAction(AppActions.LOGIN, props<{ params: LoginRequest }>());
+export const loginSuccess = createAction(AppActions.LOGIN_SUCCESS, props<{ params: number }>());
+export const loginFailure = createAction(AppActions.LOGIN_FAILURE);
+
 
 const all = union({
     loadBinanceCrypto,
@@ -29,9 +36,10 @@ const all = union({
     getSingleCryptoPrice,
     getSingleCryptoPriceSuccess,
     getSingleCryptoPriceFailure,
+
+    login,
+    loginSuccess,
+    loginFailure,
 });
 
 export type AppGetActionsUnion = typeof all;
-
-
-//  getSingleCryptoPrice

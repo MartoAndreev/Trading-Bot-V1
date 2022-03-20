@@ -3,7 +3,7 @@ import { Actions, createEffect, ofType } from "@ngrx/effects";
 import { Action } from "@ngrx/store";
 import { catchError, exhaustMap, map, of, switchMap } from "rxjs";
 import { AppService } from "src/app/providers/app.service";
-import { AppActions, AppGetActionsUnion, getSingleCryptoPriceFailure, getSingleCryptoPriceSuccess, loadBinanceCryptoFailure, loadBinanceCryptoSuccess } from "./app.actions";
+import { AppActions, AppGetActionsUnion, getSingleCryptoPriceFailure, getSingleCryptoPriceSuccess, loadBinanceCryptoFailure, loadBinanceCryptoSuccess, loginFailure, loginSuccess } from "./app.actions";
 
 @Injectable()
 
@@ -45,6 +45,27 @@ export class AppEffects {
         )
     })
 
+    public login$ = createEffect(() => {
+        return this.actions$.pipe(
+            ofType(AppActions.LOGIN),
+            switchMap((action) => {
+                console.log(action);
+                
+                return this.appSurvice.loginRequest(action.params).pipe(
+                    map((res) => {
+                        console.log(res);
+                        
+                        return loginSuccess({ params: res });
+                    },
+                        catchError((err) => {
+                            return of(loginFailure());
+                        })
+                    )
+
+                )
+            })
+        )
+    })
 
     constructor(
         private actions$: Actions<AppGetActionsUnion>,

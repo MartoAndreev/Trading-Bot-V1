@@ -12,7 +12,7 @@ export class PriceCardComponent {
     if(this.priceItem.dayChange){
       this.priceItem.dayChange = this.priceItem.dayChange*100;
     }
-    console.log(this.priceItem)
+   
   }
 
   sliceNumber9(eprice:string){

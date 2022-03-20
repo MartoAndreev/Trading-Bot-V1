@@ -34,7 +34,7 @@ export class HomeComponent {
     // 
 
     this.store.dispatch(loadBinanceCrypto());
-    
+
 
     // this.subscription.add(this.store.pipe(select(selectAllBinanceCrypto)).subscribe(res => {
     //   let test = res;
@@ -55,11 +55,10 @@ export class HomeComponent {
       //   }
       // }
       this.firstTenCryptos = [];
-      
+
       cryptos?.map((value) => {
-        
+
         if (value.fullName == 'Ethereum' || value.fullName == 'Bitcoin' || value.fullName == 'Ripple' || value.fullName == 'BNB' || value.fullName == '1inch' || value.fullName == 'Dogecoin' || value.fullName == 'SHIBA INU' || value.fullName == 'USD Coin' || value.fullName == 'BUSD' || value.fullName == 'Enjin Coin') {
-          console.log(value);
           if (value.mapperName) {
             this.firstTenCryptos.push(value);
             // this.store.dispatch(getSingleCryptoPrice({ params: value.mapperName }));
@@ -67,11 +66,9 @@ export class HomeComponent {
         }
       })
       this.loading = false
-      console.log(this.firstTenCryptos);
     });
 
     this.savedCryptos$.pipe().subscribe((crypto) => {
-      console.log(crypto);
     });
   }
 
