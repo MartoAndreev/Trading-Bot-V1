@@ -1,8 +1,20 @@
 <div class="pt-5 container">
-  <ng-container *ngFor="let item of priceList">
+
+  <div (click)="getTable()" class="dot">
+    <div *ngIf="loading" class="dot lds-ring">
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+    <mat-icon *ngIf="!loading">cached</mat-icon>
+  </div>
+  <ng-container *ngFor="let item of firstTenCryptos">
     <price-card [priceItem]="item"></price-card>
   </ng-container>
 </div>
+
+
 <!-- <html>
 
 <body>
@@ -22,4 +34,4 @@
 
 </script>
 
-</html> -->
+</html>-->

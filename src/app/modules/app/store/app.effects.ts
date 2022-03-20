@@ -3,7 +3,7 @@ import { Actions, createEffect, ofType } from "@ngrx/effects";
 import { Action } from "@ngrx/store";
 import { catchError, exhaustMap, map, of, switchMap } from "rxjs";
 import { AppService } from "src/app/providers/app.service";
-import { AppActions, AppGetActionsUnion, loadBinanceCryptoFailure, loadBinanceCryptoSuccess } from "./app.actions";
+import { AppActions, AppGetActionsUnion, getSingleCryptoPriceFailure, getSingleCryptoPriceSuccess, loadBinanceCryptoFailure, loadBinanceCryptoSuccess } from "./app.actions";
 
 @Injectable()
 
@@ -15,12 +15,28 @@ export class AppEffects {
             switchMap(() => {
                 return this.appSurvice.getAllCriptos().pipe(
                     map((crypto) => {
-                        console.log(crypto);
-
-                        return loadBinanceCryptoSuccess({ allBinanceCrypto: crypto });
+                        return loadBinanceCryptoSuccess({ params: crypto.data });
                     },
                         catchError((err) => {
                             return of(loadBinanceCryptoFailure());
+                        })
+                    )
+
+                )
+            })
+        )
+    })
+
+    public getSingleCryptoPrice$ = createEffect(() => {
+        return this.actions$.pipe(
+            ofType(AppActions.GET_SINGLE_CRYPTO_PRICE),
+            switchMap((action) => {
+                return this.appSurvice.getSingleCryptoPriceRequest(action.params).pipe(
+                    map((res) => {
+                        return getSingleCryptoPriceSuccess({ params: res });
+                    },
+                        catchError((err) => {
+                            return of(getSingleCryptoPriceFailure());
                         })
                     )
 

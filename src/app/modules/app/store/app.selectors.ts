@@ -13,22 +13,28 @@ export interface AppState {
 
 export const appState = (state: AppState) => state.appState;
 
-// export const loadBinanceCrypto = createSelector(
-//     appState,
-//     (state: AppState) => {
-//         return state.appState.allBinanceCrypto;
-//     }
-// )
+export const selectAllBinanceCrypto = createSelector(
+    appState,
+    (state: IAppState) => state.allBinanceCrypto
+    
+)
+
+export const selectSavedCryptos = createSelector(
+    appState,
+    (state: IAppState) => state.savedCryptos
+    
+)
+
 // export interface SelectorState {
 //     [fromReducer.appFeatureKey]: AppState;
 // }
 // export const selectAppState = createSelector(
-//     selectAppModuleState, 
+//     selectAppModuleState,
 //     (state: SelectorState) => state[fromApp.appFeatureKey],
 // );
 
 // export const loadBinanceCrypto = createSelector(
-//     selectAppState, 
+//     selectAppState,
 //     (state: AppState) => state.allBinanceCrypto
 // );
 // export const metaReducers: MetaReducer<AppState>[]=!environment.production

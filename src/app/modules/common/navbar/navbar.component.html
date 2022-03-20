@@ -9,6 +9,9 @@
                 <a class="nav-button" [routerLink]="['/main','wallet']">Wallet</a>
                 <a class="nav-button" [routerLink]="['/main','bot']">Bot</a>
                 <a class="nav-button" [routerLink]="['/main','account']" (click)="getUser()">Account</a>
+                <button (click)="openLoginDialog()">
+                    Login
+                </button>
             </div>
         </div>
     </div>

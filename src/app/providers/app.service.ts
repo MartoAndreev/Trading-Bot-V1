@@ -13,14 +13,17 @@ export class AppService {
 
     public getUser(userId: string) {
         let url = this.webServiceUri + `products/${userId}`;
-        console.log(url);
         return this.http.get("http://localhost:3000/products/1");
     }
     public getAllCriptos(): Observable<any> {
-        const url = 'https://www.binance.com/bapi/asset/v2/public/asset/asset/get-all-asset';
-        let res = this.http.get<any>(url);
-        console.log(res);
-        
+        // const url = 'https://www.binance.com/bapi/asset/v2/public/asset/asset/get-all-asset';
+        const url = 'https://www.binance.com/bapi/composite/v1/public/marketing/symbol/list';
+        let res = this.http.get<any>(url);        
+        return this.http.get<any>(url);
+    }
+
+    public getSingleCryptoPriceRequest(assetCode: string): Observable<any> {
+        let url = `https://api.binance.com/api/v3/ticker/price?symbol=${assetCode}USDT`;
         return this.http.get<any>(url);
     }
 }

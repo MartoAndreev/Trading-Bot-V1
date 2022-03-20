@@ -39,4 +39,4 @@ import { reducer } from './store/app.reducer';
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}

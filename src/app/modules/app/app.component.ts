@@ -38,9 +38,7 @@ export class AppComponent {
 
     this.store.dispatch(loadBinanceCrypto());
     this.subscription.add(this.store.pipe(select(loadBinanceCrypto)).subscribe(res => {
-      let test = res;
-      console.log(test);
-      
+      let test = res;      
 
     }))
     // const productsObserver = {
