@@ -25,6 +25,12 @@ export const selectSavedCryptos = createSelector(
 
 )
 
+export const selectEmail = createSelector(
+    appState,
+    (state: IAppState) => state.email
+
+)
+
 // export interface SelectorState {
 //     [fromReducer.appFeatureKey]: AppState;
 // }

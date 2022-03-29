@@ -3,7 +3,7 @@ import { Actions, createEffect, ofType } from "@ngrx/effects";
 import { Action } from "@ngrx/store";
 import { catchError, exhaustMap, map, of, switchMap } from "rxjs";
 import { AppService } from "src/app/providers/app.service";
-import { AppActions, AppGetActionsUnion, getSingleCryptoPriceFailure, getSingleCryptoPriceSuccess, loadBinanceCryptoFailure, loadBinanceCryptoSuccess, loginFailure, loginSuccess } from "./app.actions";
+import { AppActions, AppGetActionsUnion, createUserCurrencyFailure, createUserCurrencySuccess, getSingleCryptoPriceFailure, getSingleCryptoPriceSuccess, getUserCurrencyFailure, getUserCurrencySuccess, loadBinanceCryptoFailure, loadBinanceCryptoSuccess, loginFailure, loginSuccess } from "./app.actions";
 
 @Injectable()
 
@@ -50,12 +50,12 @@ export class AppEffects {
             ofType(AppActions.LOGIN),
             switchMap((action) => {
                 console.log(action);
-                
+
                 return this.appSurvice.loginRequest(action.params).pipe(
                     map((res) => {
                         console.log(res);
-                        
-                        return loginSuccess({ params: res });
+
+                        return loginSuccess({ params: action.params });
                     },
                         catchError((err) => {
                             return of(loginFailure());
@@ -66,6 +66,51 @@ export class AppEffects {
             })
         )
     })
+
+    public createUserCurrencyRequest$ = createEffect(() => {
+        return this.actions$.pipe(
+            ofType(AppActions.CREATE_USER_CURRENCY),
+            switchMap((action) => {
+                console.log(action);
+
+                return this.appSurvice.createUserCurrencyRequest(action.params).pipe(
+                    map((res) => {
+                        console.log(res);
+
+                        return getUserCurrencySuccess({ params: action.params });
+                    },
+                        catchError((err) => {
+                            return of(createUserCurrencyFailure());
+                        })
+                    )
+
+                )
+            })
+        )
+    })
+
+    public getUserCurrencyRequest$ = createEffect(() => {
+        return this.actions$.pipe(
+            ofType(AppActions.GET_USER_CURRENCY),
+            switchMap((action) => {
+                console.log(action);
+
+                return this.appSurvice.getUserCurrencyRequest(action.params).pipe(
+                    map((res) => {
+                        console.log(res);
+
+                        return getUserCurrencySuccess({ params: action.params });
+                    },
+                        catchError((err) => {
+                            return of(getUserCurrencyFailure());
+                        })
+                    )
+
+                )
+            })
+        )
+    })
+    
 
     constructor(
         private actions$: Actions<AppGetActionsUnion>,

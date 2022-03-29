@@ -43,3 +43,8 @@ export interface LoginRequest {
     email: string;
     password: string;
 }
+
+export interface CreateUserCurrencyRequest {
+    user: string;
+    currency: [string];
+}

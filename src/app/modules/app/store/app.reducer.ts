@@ -1,21 +1,26 @@
 import { state } from "@angular/animations"
 import { Action, createReducer, on } from "@ngrx/store"
 import * as AppActions from "./app.actions"
-import { getSingleCryptoPriceSuccess, loadBinanceCryptoSuccess, loginSuccess } from "./app.actions";
+import { getSingleCryptoPriceSuccess, loadBinanceCryptoSuccess, loginSuccess, loginFailure } from "./app.actions";
 import { ListRequestRes } from "./interfaces";
+
 
 export const appFeatureKey = "appState";
 
 export interface IAppState {
-    allBinanceCrypto?: Array<ListRequestRes>;
-    savedCryptos?: Array<any>;
-    userId?: number;
+    allBinanceCrypto: Array<ListRequestRes>;
+    savedCryptos: Array<any>;
+    userId: number;
+    email: string;
+    password: string;
 }
 
 export const initialState: IAppState = {
     allBinanceCrypto: [],
     savedCryptos: [],
     userId: 0,
+    email: "",
+    password: ""
 }
 
 const appReducer = createReducer(
@@ -37,7 +42,16 @@ const appReducer = createReducer(
     on(loginSuccess, (state, { params }) => {
         return {
             ...state,
-            userId: params
+            email: params.email,
+            password: params.password
+        }
+    }),
+
+    on(loginFailure, (state) => {
+        return {
+            ...state,
+            email: "",
+            password: ""
         }
     }),
 )

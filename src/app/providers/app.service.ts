@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { Observable } from 'rxjs';
-import { LoginRequest } from '../modules/app/store/interfaces';
+import { CreateUserCurrencyRequest, LoginRequest } from '../modules/app/store/interfaces';
 
 @Injectable({
     providedIn: 'root',
@@ -29,8 +29,17 @@ export class AppService {
     }
 
     public loginRequest(params: LoginRequest): Observable<any> {
-        let url = 'http://localhost:3000/user/signup';
+        let url = 'http://localhost:3000/user/login';
         return this.http.post<any>(url, params);
+    }
+    public createUserCurrencyRequest(params: CreateUserCurrencyRequest){
+        let url = 'http://localhost:3000/user_currency/create';
+        return this.http.post<any>(url, params);
+    }
+
+    public getUserCurrencyRequest(params: CreateUserCurrencyRequest){
+        let url = 'http://localhost:3000/user_currency/currencyName/bg';
+        return this.http.get<any>(url);
     }
 }
 export interface User {

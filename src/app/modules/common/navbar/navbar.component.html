@@ -8,8 +8,8 @@
                 <a class="nav-button" [routerLink]="['/main','home']">Home</a>
                 <a class="nav-button" [routerLink]="['/main','wallet']">Wallet</a>
                 <a class="nav-button" [routerLink]="['/main','bot']">Bot</a>
-                <a class="nav-button" [routerLink]="['/main','account']" (click)="getUser()">Account</a>
-                <button (click)="openLoginDialog()">
+                <a class="nav-button" [routerLink]="['/main','account']" (click)="getUser()" *ngIf="email">Account</a>
+                <button (click)="openLoginDialog()" *ngIf="!email">
                     Login
                 </button>
             </div>
