@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { Observable } from 'rxjs';
-import { CreateUserCurrencyRequest, LoginRequest } from '../modules/app/store/interfaces';
+import { BotRequest, BotRequest2, CreateUserCurrencyRequest, LoginRequest, SignupRequest } from '../modules/app/store/interfaces';
 
 @Injectable({
     providedIn: 'root',
@@ -29,9 +29,15 @@ export class AppService {
     }
 
     public loginRequest(params: LoginRequest): Observable<any> {
-        let url = 'http://localhost:3000/user/login';
+        let url = 'http://localhost:3000/user1/login';
         return this.http.post<any>(url, params);
     }
+
+    public signupRequest(params: SignupRequest): Observable<any> {
+        let url = 'http://localhost:3000/user1/signup';
+        return this.http.post<any>(url, params);
+    }
+
     public createUserCurrencyRequest(params: CreateUserCurrencyRequest){
         let url = 'http://localhost:3000/user_currency/create';
         return this.http.post<any>(url, params);
@@ -41,6 +47,28 @@ export class AppService {
         let url = 'http://localhost:3000/user_currency/currencyName/bg';
         return this.http.get<any>(url);
     }
+
+    public createTransactionRequest(params: BotRequest2){
+        let url = 'http://localhost:3000/bot2/create';
+        return this.http.post<any>(url, params);
+    }
+
+    public getByCurrencyRequest(params: string){
+        let url = `http://localhost:3000/bot2/currency/${params}`;
+        return this.http.get<any>(url);
+    }
+
+    public getByUserRequest(params: string){
+        let url = `http://localhost:3000/bot2/user/${params}`;
+        console.log(this.http.get<any>(url));
+        return this.http.get<any>(url);
+    }
+
+    public removeBotTradee(params: string){
+        let url = `http://localhost:3000/bot2/${params}`;
+        return this.http.delete<any>(url);
+    }
+
 }
 export interface User {
     id: string,

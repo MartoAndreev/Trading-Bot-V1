@@ -44,7 +44,35 @@ export interface LoginRequest {
     password: string;
 }
 
+export interface SignupRequest {
+    email: string;
+    password: string;
+    balance: number;
+}
+
+export interface BotRequest {
+    user1: string;
+    currency: string;
+    price: number;
+    action: string;
+}
+
 export interface CreateUserCurrencyRequest {
     user: string;
     currency: [string];
+}
+
+export interface BotRequest2 {
+    user?: string;
+    currency?: string;
+    price?: number;
+    action?: string;
+}
+
+export interface BotTable {
+    id?: string;
+    user?: string;
+    currency?: string;
+    price?: number;
+    action?: string;
 }

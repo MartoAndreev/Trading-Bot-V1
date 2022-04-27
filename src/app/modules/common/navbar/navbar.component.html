@@ -9,8 +9,12 @@
                 <a class="nav-button" [routerLink]="['/main','wallet']">Wallet</a>
                 <a class="nav-button" [routerLink]="['/main','bot']">Bot</a>
                 <a class="nav-button" [routerLink]="['/main','account']" (click)="getUser()" *ngIf="email">Account</a>
-                <button (click)="openLoginDialog()" *ngIf="!email">
-                    Login
+                
+                <button class="btn-hover color-5" (click)="openLoginDialog()" *ngIf="!email">
+                    Log in
+                </button>
+                <button class="btn-hover color-8" (click)="openSignUpDialog()" *ngIf="!email">
+                    Sign up
                 </button>
             </div>
         </div>

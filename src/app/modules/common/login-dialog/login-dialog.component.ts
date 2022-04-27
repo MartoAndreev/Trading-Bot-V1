@@ -21,12 +21,9 @@ export class LoginDialogComponent {
         public dialogRef: MatDialogRef<LoginDialogComponent>,
     ) { }
 
-    onNoClick(): void {
-        this.dialogRef.close();
-    }
     loginRequest(email: string, pass: string) {
         console.log(email, pass);
-        
+
         if (email && pass) {
 
             this.store.dispatch(login({
@@ -36,5 +33,6 @@ export class LoginDialogComponent {
                 }
             }))
         }
+        this.dialogRef.close();
     }
 }

@@ -11,7 +11,7 @@ import { HomeComponent } from './home.component';
     HomeComponent
   ],
   imports: [
-    HomeRoutingModule, 
+    HomeRoutingModule,
     BotCommonModule,
     CommonModule
   ],

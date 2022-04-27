@@ -34,7 +34,7 @@ body {
 }
 
 .header {
-  background: #21223f;
+  background: #777747;
   border-top-left-radius: 1rem;
   border-top-right-radius: 1rem;
   display: flex;
@@ -59,7 +59,7 @@ body {
 }
 
 .content {
-  background: #21223f;
+  background: #434339;
   border-bottom-left-radius: 1rem;
   border-bottom-right-radius: 1rem;
   display: grid;
@@ -90,7 +90,7 @@ body {
 }
 
 .total .balance {
-  background: #1f3a4a;
+  background: #22632a;
   padding: 1rem 1rem;
   border-radius: 5px;
   color: #02ca8c;
@@ -168,7 +168,7 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-  background-color: #676767;
+  background-color: #690c6d;
   border-radius: 10px;
 }
 
@@ -224,7 +224,7 @@ body {
 }
 
 .list {
-  background: #211c3a;
+  background: #443788;
   display: grid;
   grid-gap: 5px;
   padding: 5px 0;
@@ -235,7 +235,7 @@ body {
 .list div[class^="item"] {
   display: flex;
   justify-content: space-between;
-  background: #21223f;
+  background: #20212f;
   padding: 10px 0;
 }
 

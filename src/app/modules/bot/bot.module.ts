@@ -6,16 +6,14 @@ import { BotRoutingModule } from './bot-routing.module';
 import { BotComponent } from './bot.component';
 import { NgModule } from '@angular/core';
 
-
 @NgModule({
   declarations: [
     BotComponent
   ],
   imports: [
-    BotRoutingModule, 
+    BotRoutingModule,
     BotCommonModule,
     CommonModule,
-    
   ],
   providers: [],
   exports: [
@@ -23,4 +21,4 @@ import { NgModule } from '@angular/core';
     BotRoutingModule,
   ]
 })
-export class BotModule {}
+export class BotModule { }

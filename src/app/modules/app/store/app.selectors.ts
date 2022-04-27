@@ -31,6 +31,24 @@ export const selectEmail = createSelector(
 
 )
 
+export const selectAllInfo = createSelector(
+    appState,
+    (state: IAppState) => state.getBotTableInfo
+
+)
+
+export const selectBotTable = createSelector(
+    appState,
+    (state: IAppState) => state.botTable
+
+)
+
+// export const selectByUser = createSelector(
+//     appState,
+//     (state: IAppState) => state.user
+
+// )
+
 // export interface SelectorState {
 //     [fromReducer.appFeatureKey]: AppState;
 // }

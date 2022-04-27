@@ -5,6 +5,7 @@ import { Subscription } from 'rxjs';
 import { AppService } from 'src/app/providers/app.service';
 import { AppState, selectEmail } from '../../app/store/app.selectors';
 import { LoginDialogComponent } from '../login-dialog/login-dialog.component';
+import { SignUpDialogComponent } from '../signup-dialog/signup-dialog.component';
 
 @Component({
   selector: 'nav-bar',
@@ -19,6 +20,8 @@ export class NavbarComponent {
   public home = ['main', 'home'];
   constructor(private appService: AppService, public dialog: MatDialog, public store: Store<AppState>) {
     this.email$.pipe().subscribe((email) => {
+      console.log(email);
+      
       this.email = email;
     })
   }
@@ -34,5 +37,8 @@ export class NavbarComponent {
 
   openLoginDialog() {
     const dialogRef = this.dialog.open(LoginDialogComponent);
+  }
+  openSignUpDialog() {
+    const dialogRef = this.dialog.open(SignUpDialogComponent);
   }
 }

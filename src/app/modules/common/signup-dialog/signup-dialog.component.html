@@ -1,0 +1,20 @@
+<h1 class="form__title">signup</h1>
+
+<div class="form__input-group">
+    <label for="username">Username: </label>
+    <input #email type="text" class="form__input">
+</div>
+
+<div class="form__input-group">
+    <label for="pass">Password: </label>
+    <input #pass type="password" class="form__input">
+</div>
+
+<div class="form__input-group">
+    <label for="balance">Balance: </label>
+    <input #balance type="balance" class="form__input">
+</div>
+
+<div class="form__input-group">
+    <button class="form__button" (click)="signupRequest(email.value, pass.value, balance.value)">signup</button>
+</div>
