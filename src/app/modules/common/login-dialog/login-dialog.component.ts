@@ -22,7 +22,6 @@ export class LoginDialogComponent {
     ) { }
 
     loginRequest(email: string, pass: string) {
-        console.log(email, pass);
 
         if (email && pass) {
 

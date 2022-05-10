@@ -56,7 +56,6 @@ export class HomeComponent {
 
     this.loading = true;
     this.binanceCryptos$.pipe().subscribe((cryptos) => {
-      console.log(cryptos);
       // if (cryptos) {
       //   this.firstTenCryptos = [];
       //   for (let i = 0; i <= 9; i++) {

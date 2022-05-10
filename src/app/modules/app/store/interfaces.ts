@@ -47,7 +47,11 @@ export interface LoginRequest {
 export interface SignupRequest {
     email: string;
     password: string;
-    balance: number;
+}
+
+export interface SignupResponse {
+    email: string;
+    id: number;
 }
 
 export interface BotRequest {

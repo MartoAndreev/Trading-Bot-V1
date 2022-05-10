@@ -49,13 +49,15 @@ export class AppEffects {
         return this.actions$.pipe(
             ofType(AppActions.LOGIN),
             switchMap((action) => {
-                console.log(action);
-
                 return this.appSurvice.loginRequest(action.params).pipe(
                     map((res) => {
-                        console.log(res);
-
-                        return loginSuccess({ params: action.params });
+                        
+                        if (res[0]) {
+                            console.log(res);
+                            return loginSuccess({ params: action.params });
+                        } else {
+                            return loginFailure();
+                        }
                     },
                         catchError((err) => {
                             return of(loginFailure());
@@ -71,13 +73,11 @@ export class AppEffects {
         return this.actions$.pipe(
             ofType(AppActions.SIGNUP),
             switchMap((action) => {
-                console.log(action);
-
                 return this.appSurvice.signupRequest(action.params).pipe(
                     map((res) => {
                         console.log(res);
 
-                        return signupSuccess({ params: action.params });
+                        return signupSuccess({ params: res });
                     },
                         catchError((err) => {
                             return of(signupFailure());
@@ -93,12 +93,8 @@ export class AppEffects {
         return this.actions$.pipe(
             ofType(AppActions.CREATE_USER_CURRENCY),
             switchMap((action) => {
-                console.log(action);
-
                 return this.appSurvice.createUserCurrencyRequest(action.params).pipe(
                     map((res) => {
-                        console.log(res);
-
                         return getUserCurrencySuccess({ params: action.params });
                     },
                         catchError((err) => {
@@ -115,12 +111,8 @@ export class AppEffects {
         return this.actions$.pipe(
             ofType(AppActions.GET_USER_CURRENCY),
             switchMap((action) => {
-                console.log(action);
-
                 return this.appSurvice.getUserCurrencyRequest(action.params).pipe(
                     map((res) => {
-                        console.log(res);
-
                         return getUserCurrencySuccess({ params: action.params });
                     },
                         catchError((err) => {
@@ -132,17 +124,13 @@ export class AppEffects {
             })
         )
     })
-    
+
     public createTransactionRequest$ = createEffect(() => {
         return this.actions$.pipe(
             ofType(AppActions.CREATE_TRANSACTION_REQUEST),
             switchMap((action) => {
-                console.log(action);
-
                 return this.appSurvice.createTransactionRequest(action.params).pipe(
                     map((res) => {
-                        console.log(res);
-
                         return createTransactionRequestSuccess({ params: action.params });
                     },
                         catchError((err) => {
@@ -159,12 +147,8 @@ export class AppEffects {
         return this.actions$.pipe(
             ofType(AppActions.GET_BY_CURRENCY_REQUEST),
             switchMap((action) => {
-                console.log(action);
-
                 return this.appSurvice.getByCurrencyRequest(action.params).pipe(
                     map((res) => {
-                        console.log(res);
-
                         return getByCurrencyRequestSuccess({ params: action.params });
                     },
                         catchError((err) => {
@@ -181,19 +165,11 @@ export class AppEffects {
         return this.actions$.pipe(
             ofType(AppActions.GET_BY_USER_REQUEST),
             switchMap((action) => {
-                console.log(action);
-
                 return this.appSurvice.getByUserRequest(action.params).pipe(
                     map((res) => {
-                        console.log(res);
-                        console.log("text");
-                        
-
                         return getByUserRequestSuccess({ params: res });
                     },
                         catchError((err) => {
-                            console.log("error");
-                            
                             return of(getByUserRequestFailure());
                         })
                     )
@@ -207,17 +183,13 @@ export class AppEffects {
         return this.actions$.pipe(
             ofType(AppActions.REMOVE_BOT_TRADE),
             switchMap((action) => {
-                console.log(action);
-
                 return this.appSurvice.removeBotTradee(action.params).pipe(
-                    map((delite) => {
-                        
+                    map((res) => {
 
+                        
                         return removeBotTradeSuccess();
                     },
                         catchError((err) => {
-                            console.log("error");
-                            
                             return of(removeBotTradeFailure());
                         })
                     )

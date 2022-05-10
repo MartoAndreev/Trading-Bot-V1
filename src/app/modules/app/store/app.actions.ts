@@ -1,5 +1,5 @@
 import { createAction, props, union } from "@ngrx/store";
-import { BotRequest, BotRequest2, BotTable, CreateUserCurrencyRequest, ListRequestRes, LoginRequest, SignupRequest } from "./interfaces";
+import { BotRequest, BotRequest2, BotTable, CreateUserCurrencyRequest, ListRequestRes, LoginRequest, SignupRequest, SignupResponse } from "./interfaces";
 
 export enum AppActions {
     LOAD_BINANCE_CRYPTO = "[App] Load Binance Crypto",
@@ -56,7 +56,7 @@ export const loginSuccess = createAction(AppActions.LOGIN_SUCCESS, props<{ param
 export const loginFailure = createAction(AppActions.LOGIN_FAILURE);
 
 export const signup = createAction(AppActions.SIGNUP, props<{ params: SignupRequest }>());
-export const signupSuccess = createAction(AppActions.SIGNUP_SUCCESS, props<{ params: SignupRequest }>());
+export const signupSuccess = createAction(AppActions.SIGNUP_SUCCESS, props<{ params: SignupResponse }>());
 export const signupFailure = createAction(AppActions.SIGNUP_FAILURE);
 
 export const createUserCurrency = createAction(AppActions.CREATE_USER_CURRENCY, props<{ params: CreateUserCurrencyRequest }>());

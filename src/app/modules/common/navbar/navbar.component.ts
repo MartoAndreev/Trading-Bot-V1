@@ -22,6 +22,10 @@ export class NavbarComponent {
     this.email$.pipe().subscribe((email) => {
       console.log(email);
       
+      if(!email){
+      
+        return;
+      }
       this.email = email;
     })
   }

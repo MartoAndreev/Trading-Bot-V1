@@ -2,7 +2,7 @@ import { state } from "@angular/animations"
 import { Actions } from "@ngrx/effects";
 import { Action, createReducer, on } from "@ngrx/store"
 import * as AppActions from "./app.actions"
-import { getSingleCryptoPriceSuccess, loadBinanceCryptoSuccess, loginSuccess, loginFailure, getByCurrencyRequestSuccess, getByCurrencyRequestFailure, getByUserRequestSuccess, getByUserRequestFailure, removeBotTrade } from "./app.actions";
+import { getSingleCryptoPriceSuccess, loadBinanceCryptoSuccess, loginSuccess, loginFailure, getByCurrencyRequestSuccess, getByCurrencyRequestFailure, getByUserRequestSuccess, getByUserRequestFailure, removeBotTrade, signupSuccess } from "./app.actions";
 import { BotRequest2, BotTable, ListRequestRes } from "./interfaces";
 
 
@@ -74,6 +74,14 @@ const appReducer = createReducer(
         return {
             ...state,
             botTable: params
+        }
+    }),
+
+    on(signupSuccess, (state, { params }) => {
+        return {
+            ...state,
+            email: params.email,
+            userId: params.id
         }
     }),
 

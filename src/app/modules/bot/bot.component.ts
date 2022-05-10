@@ -60,8 +60,6 @@ export class BotComponent {
         }
         this.botTable = [...botTable];
         
-        console.log(botTable);
-        
       })
       
       this.email$.pipe().subscribe((email) => {
@@ -84,7 +82,6 @@ export class BotComponent {
       this.firstTenCryptos = [];
       this.loading = true;
       this.selectAllInfo$.pipe().subscribe((cryptos) => {
-        console.log(cryptos);
         cryptos?.map((value) => {
           
           if (value.action) {

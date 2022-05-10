@@ -34,8 +34,11 @@ export class AppService {
     }
 
     public signupRequest(params: SignupRequest): Observable<any> {
+        console.log("ssdsdsadsdasdasd");
         let url = 'http://localhost:3000/user1/signup';
+        
         return this.http.post<any>(url, params);
+
     }
 
     public createUserCurrencyRequest(params: CreateUserCurrencyRequest){
@@ -60,7 +63,6 @@ export class AppService {
 
     public getByUserRequest(params: string){
         let url = `http://localhost:3000/bot2/user/${params}`;
-        console.log(this.http.get<any>(url));
         return this.http.get<any>(url);
     }
 

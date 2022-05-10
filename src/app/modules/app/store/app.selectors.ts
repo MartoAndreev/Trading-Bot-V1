@@ -43,6 +43,12 @@ export const selectBotTable = createSelector(
 
 )
 
+export const goToLogin = createSelector(
+    appState,
+    (state: IAppState) => state.email
+
+)
+
 // export const selectByUser = createSelector(
 //     appState,
 //     (state: IAppState) => state.user
